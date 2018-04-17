@@ -1,0 +1,141 @@
+---
+title: "Initial Analysis and Model Performance"
+author: "Malini Chatterjee"
+date: "April 17, 2018"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+
+
+# Load packages/project
+```{r load_packages, warning=FALSE, message=FALSE, echo=FALSE}
+
+# load the packages
+library('ProjectTemplate')
+library(tidyverse)
+library(broom)
+library(rpart)
+library(ROCR)
+library(partykit)
+library(modelr)
+library(randomForest)
+
+```
+#  Load project data set 
+```{r var1, eval=TRUE, echo=TRUE}
+
+# load train.csv
+setwd("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing")
+train = read.csv2(file="data/bank.csv", header=T, sep=";", quote="\"")
+
+train <- train %>% mutate(y_num = case_when(y == 'no'~ 0, 
+                                   y == 'yes'~1))
+
+```
+#  Build the train and test data 
+```{r var2, eval=TRUE, echo=TRUE}
+
+set.seed(987)
+
+train_data <- resample_partition(train, c(test = 0.3, train = 0.7))
+train_set <- as.tibble(train_data$train)
+train_set
+test_set <- as.tibble(train_data$test)
+test_set
+
+```
+#  Generate decision tree model
+```{r var3, eval=TRUE, echo=TRUE}
+
+# This week's new tree model
+tree_mod <- rpart(y ~ age + job + marital+education+default+balance+housing+loan+contact+duration+campaign+pdays+previous+poutcome,data=train_set)
+# plot the tree
+plot(as.party(tree_mod))
+
+```
+#  Generate random forest model
+```{r var4, eval=TRUE, echo=TRUE}
+
+rf_mod <- randomForest(y ~ age + job + marital+education+default+balance+housing+loan+contact+duration+campaign+pdays+previous+poutcome,data=train_set,ntrees = 500,
+                        mtry = 4,
+                        na.action = na.roughfix)
+print(rf_mod)
+
+```
+#  Predict on test data for RandomForest and Decision Tree
+```{r var5, eval=TRUE, echo=TRUE}
+
+# predict the test data
+rf_preds <- predict(rf_mod, newdata = test_set, type = 'prob')[,2]
+tree_preds <- predict(tree_mod, newdata = test_set)[,2]
+
+# create the prediction objects for both models
+pred_rf <- prediction(predictions = rf_preds, labels = test_set$y_num)
+pred_tree <- prediction(predictions = tree_preds, labels = test_set$y)
+# calculate the AUC
+auc_rf <- performance(pred_rf, measure = 'auc')
+auc_tree <- performance(pred_tree, measure = 'auc')
+
+```
+#  Extract AUC Value for Random Forest and Decision Tree
+```{r var6, eval=TRUE, echo=TRUE}
+
+# extract the AUC value for random forest
+auc_rf@y.values[[1]]
+# extract the AUC value for decision tree
+auc_tree@y.values[[1]]
+
+```
+#  Plot the ROC Curve plots for the models
+```{r var7, eval=TRUE, echo=TRUE}
+
+# get the FPR and TPR for the random forest model
+# recall that the ROC curve plots the FPR on the x-axis
+perf_rf <- performance(pred_rf, measure = 'tpr', x.measure = 'fpr')
+perf_rf_tbl <- tibble(perf_rf@x.values[[1]], perf_rf@y.values[[1]])
+# Change the names of the columns of the tibble
+names(perf_rf_tbl) <- c('fpr', 'tpr')
+# get the FPR and TPR for the decision tree model
+perf_tree <- performance(pred_tree, measure = 'tpr', x.measure = 'fpr')
+perf_tree_tbl <- tibble(perf_tree@x.values[[1]], perf_tree@y.values[[1]])
+# Change the names of the columns of the tibble
+names(perf_tree_tbl) <- c('fpr', 'tpr')
+# Plotting function for plotting a nice ROC curve using ggplot
+plot_roc <- function(perf_tbl) {
+p <- ggplot(data = perf_tbl, aes(x = fpr, y = tpr, group=Model, colour=Model)) +
+geom_line() +
+geom_abline(intercept = 0, slope = 1, lty = 3) +
+labs(x = 'False positive rate', y = 'True positive rate') +
+theme_bw()
+return(p)
+}
+# Create ROC
+t1 <- perf_rf_tbl %>% mutate(Model = 'Random Forest') 
+t2 <- perf_tree_tbl %>% mutate(Model = 'Decision Tree')
+t3 <- bind_rows(t1, t2)
+plot_roc(t3)
+
+```
+#  Create the cut-off matrix for the models
+```{r var8, eval=TRUE, echo=TRUE}
+
+# Create cutoffs matrix for Random Forest model
+rf_cutoffs <- data.frame(cut=perf_rf@alpha.values[[1]], fpr=perf_rf@x.values[[1]], tpr=perf_rf@y.values[[1]])
+rf_cutoffs <- rf_cutoffs[order(rf_cutoffs$tpr, decreasing = FALSE),]
+head(subset(rf_cutoffs, tpr>=0.7))
+# Create cutoffs matrix for Decision Tree model
+tree_cutoffs <- data.frame(cut=perf_tree@alpha.values[[1]], fpr=perf_tree@x.values[[1]], tpr=perf_tree@y.values[[1]])
+tree_cutoffs <- tree_cutoffs[order(tree_cutoffs$tpr, decreasing = FALSE),]
+head(subset(tree_cutoffs, tpr>=0.6))
+
+```

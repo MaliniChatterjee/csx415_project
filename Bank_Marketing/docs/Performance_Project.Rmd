@@ -1,0 +1,117 @@
+---
+title: "Assignment_2"
+author: "Malini"
+date: "April 16, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Loading the Project and Bank.csv data
+```{r cars,echo=TRUE}
+setwd("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing")
+library('ProjectTemplate')
+library(tidyverse)
+library(broom)
+library(rpart)
+library(ROCR)
+library(libcoin)
+library(partykit)
+library(modelr)
+library(randomForest)
+
+#load.project()
+setwd("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing")
+bank_data <- read.csv2(file="data/bank.csv",header=T,sep=";",quote="\"")
+bank_data <- bank_data %>% mutate(y_num = case_when(y == 'no'~ 0, 
+                                                    y == 'yes'~1))
+head(bank_data)
+glimpse(bank_data)
+## Creating the Training and Testing Data sets
+
+#ind <- sample(2,nrow(bank_data),replace=T,prob=c(0.8,0.2))
+#train_data <- as.tibble(bank_data[ind==1,]) 
+#test_data <- as.tibble(bank_data[ind==2,])
+#glimpse(train_data)
+#glimpse(test_data)
+
+bank_data_sam <- resample_partition(bank_data, c(test = 0.2, train = 0.8))
+train_data <- as.tibble(bank_data_sam$train)
+glimpse(train_data)
+test_data <- as.tibble(bank_data_sam$test)
+glimpse(test_data)
+
+
+## Creating the Random Forest Model
+
+
+library(randomForest)
+model_rf <- randomForest(y ~ age + job + marital+education+default+balance+housing+loan+contact+duration+campaign+pdays+previous+poutcome,data=train_data)
+print(model_rf)
+
+## Creaing the decision tree model
+
+library(rpart)
+model_tree <- rpart(y ~ age + job + marital+education+default+balance+housing+loan+contact+duration+campaign+pdays+previous+poutcome,data=train_data)
+print(model_tree)
+plot(as.party(model_tree))
+#plot(model_tree)
+
+
+## Compare the performance of the decision tree and random forest using the ROCR package and AUC to identify which model performs better
+
+
+library(ROCR)
+
+#rf_preds <- predict(rf_mod, newdata = test_set, type = 'prob')[,2]
+#tree_preds <- predict(tree_mod, newdata = test_set)[,2]
+#pred_rf <- prediction(predictions = rf_preds, labels = test_set$y_num)
+#pred_tree <- prediction(predictions = tree_preds, labels = test_set$y)
+
+
+rf_preds <- predict(model_rf, newdata=test_data, type='prob')[,2]
+tree_preds <- predict(model_tree,newdata = test_data)[,2]
+
+pred_rf <- prediction(predictions = rf_preds, label= test_data$y_num)
+pred_tree <-prediction(predictions=tree_preds, label = test_data$y)
+
+auc_rf <- performance(pred_rf,measure='auc')
+auc_tree <- performance(pred_tree,measure='auc')
+
+auc_rf@y.values[[1]]
+auc_tree@y.values[[1]]
+
+## Including ROC Plots
+
+#perf_rf <- performance(pred_rf,measure='tpr',x.measure='fpr')
+#perf_rf_tbl <- tibble(perf_rf@x.values[[1]],perf_rf@y.values[[1]])
+#names(perf_rf_tbl) <- c('fpr','tpr')
+#perf_tree <- performance(pred_tree,measure='tpr',x.measure='fpr')
+#perf_tree_tbl <- tibble(perf_tree@x.values[[1]],perf_tree@y.values[[1]])
+#names(perf_tree_tbl) <- c('fpr','tpr')
+#plot_roc <- function(perf_tbl) {
+#p <-ggplot(data=perf_tbl,aes(x=fpr,y=tpr,group=Model,colour=Model)) +
+ # geom_line() + geom_abline(intercept=0,slope=1,lty=3) + labs(x='FPR', y='TPR')+ theme_bw()
+#return(p)
+#}
+#t1 <- perf_rf_tbl %>% mutate(Model='Random Forest')
+#t2 <- perf_tree_tbl %>% mutate(Model='Decision Tree')
+#t3 <- bind_rows(t1,t2)
+#plot_roc(t3)
+
+```
+
+
+```{r pressure, echo=FALSE}
+#plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

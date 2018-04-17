@@ -1,0 +1,212 @@
+---
+title: "Initial Analysis and Model Performance"
+author: "Sanatan Das"
+date: "April 16, 2018"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(readxl)
+library(broom)
+```
+
+\newpage
+
+# Initial Data Analysis
+
+```{r var1, eval=TRUE, echo=FALSE}
+
+# load the data set from excel file
+default_rates <- read_excel("C:/view/opt/apps/git/compscix-415-1-assignments/data/peps3xx.xls")
+
+```
+
+```{r var2, eval=TRUE, echo=TRUE}
+
+# take a look at the data
+glimpse(default_rates)
+
+```
+
+
+```{r var3, eval=TRUE, echo=TRUE}
+
+# add factor to the 'char' columns
+default_rates$Name <- as.factor(default_rates$Name)
+default_rates$State <- as.factor(default_rates$State)
+default_rates$ZipCode <- as.factor(default_rates$ZipCode)
+default_rates$ProgLength <- as.factor(default_rates$ProgLength)
+default_rates$SchoolType <- as.factor(default_rates$SchoolType)
+default_rates$EthnicCode <- as.factor(default_rates$EthnicCode)
+default_rates$Prate <- as.factor(default_rates$Prate)
+default_rates$CongDis <- as.factor(default_rates$CongDis)
+# convert the columns to 'double' data type
+default_rates$Drate <- as.double(default_rates$Drate)
+default_rates$Num <- as.double(default_rates$Num)
+default_rates$Denom <- as.double(default_rates$Denom)
+
+```
+
+```{r var4, eval=TRUE, echo=TRUE}
+
+# plot the relationship between Ethnic Code and the Default Rate
+default_rates %>% 
+ggplot() + 
+  geom_bar(aes(x = EthnicCode, y = Drate), stat = 'identity') +
+  theme_bw()
+
+```
+
+```{r var5, eval=TRUE, echo=TRUE}
+
+# plot the relationship between Program Length and the Default Rate
+default_rates %>% 
+ggplot() + 
+  geom_bar(aes(x = ProgLength, y = Drate), stat = 'identity') +
+  theme_bw()
+
+```
+
+```{r var6, eval=TRUE, echo=TRUE}
+
+# plot the relationship between School Type and the Default Rate
+default_rates %>% 
+ggplot() + 
+  geom_bar(aes(x = SchoolType, y = Drate), stat = 'identity') +
+  theme_bw()
+
+```
+
+```{r var7, eval=TRUE, echo=TRUE}
+
+# plot the relationship between Prate (what type of rate was calculated for the institution.) and the Default Rate
+default_rates %>% 
+ggplot() + 
+  geom_bar(aes(x = Prate, y = Drate), stat = 'identity') +
+  theme_bw()
+
+```
+
+```{r var8, eval=TRUE, echo=TRUE}
+
+# plot the relationship between Num (Number of Borrowers in Default) and the Default Rate
+ggplot(default_rates, aes(x = Num, y = Drate)) +
+  geom_point(color = "blue") + 
+  geom_smooth(method = "lm", se = FALSE, color = "red") + 
+  theme_bw()
+
+```
+
+```{r var9, eval=TRUE, echo=TRUE}
+
+# plot the relationship between Denom (Number of Borrowers in Repay) and the Default Rate
+ggplot(default_rates, aes(x = Denom, y = Drate)) +
+  geom_point(color = "blue") + 
+  geom_smooth(method = "lm", se = FALSE, color = "red") + 
+  theme_bw()
+
+```
+
+\newpage
+
+# Model Performance
+
+
+```{r var10, eval=TRUE, echo=TRUE}
+
+# Linear model on 'Name' feature
+lm_1 <- lm(Drate ~ Name, data = default_rates)
+tidy(lm_1)
+
+```
+
+```{r var11, eval=TRUE, echo=TRUE}
+
+# Linear model on 'Name' feature
+lm_1 <- lm(Drate ~ Name, data = default_rates)
+tidy(lm_1)
+
+```
+
+```{r var12, eval=TRUE, echo=TRUE}
+
+# Linear model on 'State' feature
+lm_2 <- lm(Drate ~ State, data = default_rates)
+tidy(lm_2)
+
+```
+
+```{r var13, eval=TRUE, echo=TRUE}
+
+# Linear model on 'ZipCode' feature
+lm_3 <- lm(Drate ~ ZipCode, data = default_rates)
+tidy(lm_3)
+
+```
+
+```{r var14, eval=TRUE, echo=TRUE}
+
+# Linear model on 'ProgLength' feature
+lm_4 <- lm(Drate ~ ProgLength, data = default_rates)
+tidy(lm_4)
+
+```
+
+```{r var15, eval=TRUE, echo=TRUE}
+
+# Linear model on 'SchoolType' feature
+lm_5 <- lm(Drate ~ SchoolType, data = default_rates)
+tidy(lm_5)
+
+```
+
+```{r var16, eval=TRUE, echo=TRUE}
+
+# Linear model on 'Num' feature
+lm_6 <- lm(Drate ~ Num, data = default_rates)
+tidy(lm_6)
+
+```
+
+```{r var17, eval=TRUE, echo=TRUE}
+
+# Linear model on 'Denom' feature
+lm_7 <- lm(Drate ~ Denom, data = default_rates)
+tidy(lm_7)
+
+```
+
+```{r var18, eval=TRUE, echo=TRUE}
+
+# Linear model on 'Prate' feature
+lm_8 <- lm(Drate ~ Prate, data = default_rates)
+tidy(lm_8)
+
+```
+
+```{r var19, eval=TRUE, echo=TRUE}
+
+# Linear model on 'EthnicCode' feature
+lm_9 <- lm(Drate ~ EthnicCode, data = default_rates)
+tidy(lm_9)
+
+```
+
+```{r var20, eval=TRUE, echo=TRUE}
+
+# Final model usiing all features
+lm_0 <- lm(Drate ~ Name + State + ZipCode + ProgLength + SchoolType + Num + Denom + Prate + EthnicCode, data = default_rates)
+tidy(lm_0)
+
+```
+

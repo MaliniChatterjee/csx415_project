@@ -1,0 +1,116 @@
+---
+title: "Assignment:Formal_Problem_statement"
+author: "Malini Chatterjee"
+date: "April 8, 2018"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Business Problem Statememt
+
+The purpose of this project is to help the marketing team in New Products  department in a Portugese financial institution to decide on the success probability of a long term deposit(product) before the launch of the product.
+Every financial institution has a significant budget in marketing its new products.Besides the traditional marketing, if the team has some insight about their existing customers and their likelihood to subscribe to a new product based on similar customer profile sampling data, then the marketing team can target/focus their time/energy to those customers who are more likely to subscribe to this new product.Each call made by an agent marketing the product is important.The weekly sales quota needs to be met. If the agent has a smaller "potential" list of customers, his/her chances of success are more. 
+
+## Current Business Process
+
+The agents in the organization works for 40 hours a week, actively selling the long term deposit amongst other new products.
+They need to meet the weekly sales quota.
+They have basic information on customers A and B, including their phone numbers. 
+Such an agent is worried that she will have to spend 30 minutes talking to Customer A with no guarantee of closing any deal.
+Should she call Customer A, or move on to the next potential customer B?
+She just calls based on "purchase history" list with maximum sales for customers.
+Her decision on calling customers is based on 1 metric and that might be wrong.
+Her weekly sales target is not met.The company incurs a loss of 40 hours * 30 (billing rate) ~ $1200 with no productive sales deal closure.
+
+## Scope Statement
+
+Provided the data assumptions are true, the scope is defined as:
+
+Look at records of similar customers and check if a successful subscription was made. A new/potential customer's financial variables must be compared against entries in an existing customer dataset and a prediction must be computed.Use of machine learning algorithm to retrieve feature vectors similar to the query vector.
+
+## Key Business Objectives
+
+Predict the subscription of the new long term deposit for a potential customer.
+
+## Success Criteria
+
+Prediction Model should give around 70% accuracy for testing/validation.
+
+## Project Completion Criteria
+
+If the prediction model gives around 70% accuracy based on validation and the weekly sales quota is met for the marketing tele-agents.
+
+## Risks and Limitations
+
+Model will be trained on the existing customer data. The sampling within the customers will be random in nature.
+
+## Assumptions
+
+1) Customer data has the required nominal and ordinal features that are identified.
+2) Correlation between such features and subscription of similar products can be established.
+
+## Functional & Non-Functional Requirements
+
+Non-Functional requirements
+1) Network/Infrastructure to be provided to support the project.
+
+Functional requirements
+1) Identify the customer data source. 
+2) Analyze the customer data and derive the feature vectors
+3) Find correlation between the identified features and the subscription success.
+4) Model with the desired accuracy which meets the success criteria.
+
+## Cost and Schedule
+
+1) Project deploy potentially in three months. So,derive the feasibility of the model development in 3 weeks time (provided we have the results from the customer data analysis by the SME team + Data Scientist)
+2) Proposed team structure Will be provided in the Statement of Work document.
+3) Cost based on T&M mode of project billing. Billing and Invoice information to be discussed during the Statement of Work formalization.
+4) Weekly status update to keep the client aware of the project progress.
+
+
+## New/Modified Business Process 
+
+1) Model to decide on the potential customer.
+2) Tele marketing users understand the purpose of the model and use it to their best interests.
+
+## Training
+
+1) Train the tele-marketing agents on the nominal and ordinal features to identify the customer profile.
+2) Define him/her a list of the features in the order of decreasing correlation with the subscription.
+
+## Stakeholder List
+
+1) Product Manager/Owner
+2) Analytic Manager
+3) Subject Matter Expert (SME) Team
+4) Business Users
+5) End Users - Tele-marketing agents
+6) IT Manager - Tech team partner who maintains the Customer data warehouse.
+7) Data Scientist 
+8) Data Engineers 
+9) DevOps - Deployment and testing
+10) Operations 
+ 
+
+## Quality Measures
+
+Comply with all financial institution privacy/IT compliance Act and security measures.
+
+## Checklists (Process and Requirements)
+
+1) Requirements document
+2) Project Proposal including the feasibility analysis and data visualizations
+3) Statement of Work
+4) Project Plan with Effort/Timelines 
+3) Resource Plan
+4) Deliver the model if it meets the success criteria.
+5) Deliver model performance/validation testing results with data visualizations
+6) Version-Controlled Code/Instructions for deploy and maintenance.
+7) Model heath-check list/criteria
+8) Monitoring checklist 
+
