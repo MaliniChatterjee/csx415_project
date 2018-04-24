@@ -45,8 +45,10 @@ glimpse(bank_data)
 
 bank_data_sam <- resample_partition(bank_data, c(test = 0.2, train = 0.8))
 train_data <- as.tibble(bank_data_sam$train)
+train_data
 glimpse(train_data)
 test_data <- as.tibble(bank_data_sam$test)
+test_data
 glimpse(test_data)
 
 
@@ -77,11 +79,11 @@ library(ROCR)
 #pred_tree <- prediction(predictions = tree_preds, labels = test_set$y)
 
 
-rf_preds <- predict(model_rf, newdata=test_data, type='prob')[,2]
+rf_preds <- predict(model_rf, newdata= test_data, type='prob')[,2]
 tree_preds <- predict(model_tree,newdata = test_data)[,2]
 
-pred_rf <- prediction(predictions = rf_preds, label= test_data$y_num)
-pred_tree <-prediction(predictions=tree_preds, label = test_data$y)
+pred_rf <- prediction(predictions = rf_preds, labels= test_data$y_num)
+pred_tree <- prediction(predictions= tree_preds, labels = test_data$y)
 
 auc_rf <- performance(pred_rf,measure='auc')
 auc_tree <- performance(pred_tree,measure='auc')
@@ -91,21 +93,21 @@ auc_tree@y.values[[1]]
 
 ## Including ROC Plots
 
-#perf_rf <- performance(pred_rf,measure='tpr',x.measure='fpr')
-#perf_rf_tbl <- tibble(perf_rf@x.values[[1]],perf_rf@y.values[[1]])
-#names(perf_rf_tbl) <- c('fpr','tpr')
-#perf_tree <- performance(pred_tree,measure='tpr',x.measure='fpr')
-#perf_tree_tbl <- tibble(perf_tree@x.values[[1]],perf_tree@y.values[[1]])
-#names(perf_tree_tbl) <- c('fpr','tpr')
-#plot_roc <- function(perf_tbl) {
-#p <-ggplot(data=perf_tbl,aes(x=fpr,y=tpr,group=Model,colour=Model)) +
- # geom_line() + geom_abline(intercept=0,slope=1,lty=3) + labs(x='FPR', y='TPR')+ theme_bw()
-#return(p)
-#}
-#t1 <- perf_rf_tbl %>% mutate(Model='Random Forest')
-#t2 <- perf_tree_tbl %>% mutate(Model='Decision Tree')
-#t3 <- bind_rows(t1,t2)
-#plot_roc(t3)
+perf_rf <- performance(pred_rf,measure='tpr',x.measure='fpr')
+perf_rf_tbl <- tibble(perf_rf@x.values[[1]],perf_rf@y.values[[1]])
+names(perf_rf_tbl) <- c('fpr','tpr')
+perf_tree <- performance(pred_tree,measure='tpr',x.measure='fpr')
+perf_tree_tbl <- tibble(perf_tree@x.values[[1]],perf_tree@y.values[[1]])
+names(perf_tree_tbl) <- c('fpr','tpr')
+plot_roc <- function(perf_tbl) {
+p <-ggplot(data=perf_tbl,aes(x=fpr,y=tpr,group=Model,colour=Model)) +
+  geom_line() + geom_abline(intercept=0,slope=1,lty=3) + labs(x='FPR', y='TPR')+ theme_bw()
+return(p)
+}
+t1 <- perf_rf_tbl %>% mutate(Model='Random Forest')
+t2 <- perf_tree_tbl %>% mutate(Model='Decision Tree')
+t3 <- bind_rows(t1,t2)
+plot_roc(t3)
 
 ```
 
