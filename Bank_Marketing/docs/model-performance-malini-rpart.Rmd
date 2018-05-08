@@ -29,6 +29,9 @@ library(ROCR)
 library(partykit)
 library(modelr)
 library(randomForest)
+library(devtools)
+library(roxygen2)
+library(caret)
 
 ```
 #  Load project data set 
@@ -153,7 +156,15 @@ print(rf_mod)
 rf_preds <- predict(rf_mod, newdata = test_set, type = 'prob')[,2]
 tree_preds <- predict(tree_mod, newdata = test_set)[,2]
 glm_preds <- predict(glm_mod, newdata = test_set, type='response')
-
+#confusion <- table(train_data$y,predict(tree_mod,type='class'))
+#table(pred, df$outcome)
+#conf_rf <- table(train_set$y_num,rf_preds)
+#conf_rf <- confusionMatrix(test_data$y_num, rf_preds)
+#conf_tree <- table(tree_preds)
+#conf_glm <- table(glm_preds)
+#print(conf_rf)
+#print(conf_tree)
+#print(conf_glm)
 # create the prediction objects for both models
 pred_rf <- prediction(predictions = rf_preds, labels = test_set$y_num)
 pred_tree <- prediction(predictions = tree_preds, labels = test_set$y)
@@ -169,7 +180,7 @@ auc_glm <- performance(pred_glm, measure ='auc')
 # extract the AUC value for random forest
 auc_rf@y.values[[1]]
 # extract the AUC value for decision tree
-auc_tree@y.values[[1]]
+auc_glm@y.values[[1]]
 # extract the AUC value for GLM
 auc_tree@y.values[[1]]
 ```
