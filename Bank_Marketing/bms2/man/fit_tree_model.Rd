@@ -6,9 +6,6 @@
 \usage{
 fit_tree_model(dat_file = TRUE)
 }
-\arguments{
-\item{dat_file}{}
-}
 \description{
 Decision Tree Model
 }

@@ -1,9 +1,9 @@
 #' GLM Model
-#' @param dat_file 
-#' @keywords 
+#' @param dat_file
+#' @keywords
 #' @export
 #' @examples
-#' 
+#'
 #' fit_glm_model()
 fit_glm_model <- function(dat_file=TRUE){
 library("modelr")
@@ -15,6 +15,7 @@ fit_glm_mod <- glm(y~age + job + marital+education+default+balance+housing+loan+
 #exp(coef(glm_mod)) # exponentiated coefficients
 #exp(confint(glm_mod)) # 95% CI for exponentiated coefficients
 #predict(glm_mod, type="response") # predicted values
-#residuals(glm_mod, type="deviance") # residuals 
+#residuals(glm_mod, type="deviance") # residuals
+print('Logistic Regression Model Trained')
 return(fit_glm_mod)
 }

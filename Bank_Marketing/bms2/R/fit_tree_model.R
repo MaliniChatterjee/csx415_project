@@ -1,9 +1,9 @@
 #' Decision Tree Model
-#' @param dat_file 
-#' @keywords 
+#' @param dat_file
+#' @keywords
 #' @export
 #' @examples
-#' 
+#'
 #' fit_tree_model()
 fit_tree_model <- function(dat_file=TRUE){
   library("modelr")
@@ -14,6 +14,7 @@ fit_tree_model <- function(dat_file=TRUE){
   #tree_mod <- train(y ~ age + job + marital+education+default+balance+housing+loan+contact+duration+campaign+pdays+previous+poutcome,
   #                  data=dat_file,method = "rpart",cp=0.002,maxdepth=8)
   tree_mod <- rpart(y ~ age + job + marital+education+default+balance+housing+loan+contact+duration+campaign+pdays+previous+poutcome,data=dat_file)
+  print('Decision Tree Model Trained')
   # plot the tree
   png(filename="C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\graphs\\decsn_tree1.png")
   #plot(fit)

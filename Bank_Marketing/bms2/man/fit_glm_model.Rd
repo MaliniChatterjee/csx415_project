@@ -6,9 +6,6 @@
 \usage{
 fit_glm_model(dat_file = TRUE)
 }
-\arguments{
-\item{dat_file}{}
-}
 \description{
 GLM Model
 }

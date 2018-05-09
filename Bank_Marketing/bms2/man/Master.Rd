@@ -16,6 +16,4 @@ A BMS Subscription Model generation
 
 
 Master()
-predict the test data
- Extract AUC Value for Random Forest,Decision Tree. Logistic Regression
 }
