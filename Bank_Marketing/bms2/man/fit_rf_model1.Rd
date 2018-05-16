@@ -2,7 +2,8 @@
 % Please edit documentation in R/fit_rf_model1.R
 \name{fit_rf_model1}
 \alias{fit_rf_model1}
-\title{Random Forest Model generation}
+\title{Random Forest Model generation
+This will generate the random forest model using caret library.}
 \usage{
 fit_rf_model1(dat_file = TRUE)
 }
@@ -11,6 +12,7 @@ fit_rf_model1(dat_file = TRUE)
 }
 \description{
 Random Forest Model generation
+This will generate the random forest model using caret library.
 }
 \examples{
 

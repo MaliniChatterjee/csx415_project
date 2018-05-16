@@ -1,5 +1,5 @@
 #' Random Forest Model generation
-#'
+#' This will generate the random forest model using caret library.
 #' @param  dat_file
 #' @keywords
 #' @export

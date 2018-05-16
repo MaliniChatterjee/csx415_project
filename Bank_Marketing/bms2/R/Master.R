@@ -1,4 +1,8 @@
 #' A BMS Subscription Model generation
+#' It calls different functions for model generation
+#' Performance testing on test-set
+#' Plot ROC curves for all the different models to compare the performance
+#' Models in consideration: Logistic Regression, Decision Tree, Random Forest
 #'
 #' @param  dat_file
 #' @keywords

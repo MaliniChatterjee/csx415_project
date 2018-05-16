@@ -2,7 +2,11 @@
 % Please edit documentation in R/Master.R
 \name{Master}
 \alias{Master}
-\title{A BMS Subscription Model generation}
+\title{A BMS Subscription Model generation
+It calls different functions for model generation
+Performance testing on test-set
+Plot ROC curves for all the different models to compare the performance
+Models in consideration: Logistic Regression, Decision Tree, Random Forest}
 \usage{
 Master(dat_file = TRUE)
 }
@@ -11,6 +15,10 @@ Master(dat_file = TRUE)
 }
 \description{
 A BMS Subscription Model generation
+It calls different functions for model generation
+Performance testing on test-set
+Plot ROC curves for all the different models to compare the performance
+Models in consideration: Logistic Regression, Decision Tree, Random Forest
 }
 \examples{
 
