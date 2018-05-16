@@ -28,6 +28,8 @@ https://github.com/MaliniChatterjee/csx415_project/blob/master/Bank_Marketing/do
 ## Code and all project artifactory
 
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/
+## All R files/packages are placed under the bms2 folder
+https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2
 
 
 
