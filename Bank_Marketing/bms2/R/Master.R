@@ -20,6 +20,7 @@ test_set <- train_test("data/bank.csv")$test
 #print(train_set)
 #print(test_set)
 rf_model <- fit_rf_model1(train_set)
+saveRDS(rf_model,"C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\data\\rf_model.Rds")
 print(rf_model)
 glm_model <- fit_glm_model(train_set)
 print(summary(glm_model)) # display results
