@@ -31,7 +31,13 @@ https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/
 ## All R files/packages are placed under the bms2 folder
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2
 
+## Executable code
+https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/R/Master.R
 
+## Model as data
+
+The Random Forest model is saved in the underlying data folder.
+https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/rf_model.Rds
 
 
 
