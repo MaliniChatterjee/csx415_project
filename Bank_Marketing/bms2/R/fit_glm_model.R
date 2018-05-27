@@ -1,4 +1,4 @@
-#' GLM Model
+#' GLM Model build
 #' @param dat_file
 #' @keywords
 #' @export

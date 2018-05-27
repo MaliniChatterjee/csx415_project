@@ -6,12 +6,13 @@
 It calls different functions for model generation
 Performance testing on test-set
 Plot ROC curves for all the different models to compare the performance
-Models in consideration: Logistic Regression, Decision Tree, Random Forest}
+Models in consideration: Logistic Regression, Decision Tree, Random Forest
+path_root should be used as setwd.}
 \usage{
-Master(dat_file = TRUE)
+Master(path_root)
 }
 \arguments{
-\item{dat_file}{}
+\item{path_root}{}
 }
 \description{
 A BMS Subscription Model generation
@@ -19,6 +20,7 @@ It calls different functions for model generation
 Performance testing on test-set
 Plot ROC curves for all the different models to compare the performance
 Models in consideration: Logistic Regression, Decision Tree, Random Forest
+path_root should be used as setwd.
 }
 \examples{
 

@@ -2,7 +2,9 @@
 % Please edit documentation in R/perf_tree_model.R
 \name{perf_tree_model}
 \alias{perf_tree_model}
-\title{Performance of Decision Tree Model on test data}
+\title{Performance of Decision Tree Model on test data
+This is used to also generate the AUC values, get FPR, TPR and get the data
+for plotting the ROC curve for the model.Also, to get the cut-offs.}
 \usage{
 perf_tree_model(tree_model, test_set)
 }
@@ -11,6 +13,8 @@ perf_tree_model(tree_model, test_set)
 }
 \description{
 Performance of Decision Tree Model on test data
+This is used to also generate the AUC values, get FPR, TPR and get the data
+for plotting the ROC curve for the model.Also, to get the cut-offs.
 }
 \examples{
 

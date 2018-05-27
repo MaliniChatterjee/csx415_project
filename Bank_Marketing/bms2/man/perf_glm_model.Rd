@@ -10,7 +10,8 @@ perf_glm_model(glm_model, test_set)
 \item{glm_model, test_set}{}
 }
 \description{
-Performance of GLM models on test data
+This is used to also generate the AUC values, get FPR, TPR and get the data
+for plotting the ROC curve for the model.Also, to get the cut-offs.
 }
 \examples{
 

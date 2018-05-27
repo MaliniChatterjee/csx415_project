@@ -2,12 +2,12 @@
 % Please edit documentation in R/fit_glm_model.R
 \name{fit_glm_model}
 \alias{fit_glm_model}
-\title{GLM Model}
+\title{GLM Model build}
 \usage{
 fit_glm_model(dat_file = TRUE)
 }
 \description{
-GLM Model
+GLM Model build
 }
 \examples{
 

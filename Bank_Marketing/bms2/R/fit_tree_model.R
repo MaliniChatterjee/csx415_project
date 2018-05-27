@@ -1,4 +1,4 @@
-#' Decision Tree Model
+#' Decision Tree Model build and plot the decision tree-saved in graphs.
 #' @param dat_file
 #' @keywords
 #' @export

@@ -2,7 +2,10 @@
 % Please edit documentation in R/train_test.R
 \name{train_test}
 \alias{train_test}
-\title{Data Prep}
+\title{Data Preparation Step
+Reads the source data file,
+does the initial exploratory data analysis by creating
+and saving plots on individual features}
 \usage{
 train_test(dat_file)
 }
@@ -10,7 +13,7 @@ train_test(dat_file)
 \item{dat_file}{}
 }
 \description{
-Data Prep
+Also creates the sample train and test data set after taking care of any factorizatons if any
 }
 \examples{
 

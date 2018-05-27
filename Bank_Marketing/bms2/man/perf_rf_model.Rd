@@ -4,7 +4,7 @@
 \alias{perf_rf_model}
 \title{Performance of RF models on test data
 This is used to also generate the AUC values, get FPR, TPR and get the data
-for plotting the ROC curve for the model.}
+for plotting the ROC curve for the model.Alos, to get the cut-offs.}
 \usage{
 perf_rf_model(rf_model, test_set)
 }
@@ -14,7 +14,7 @@ perf_rf_model(rf_model, test_set)
 \description{
 Performance of RF models on test data
 This is used to also generate the AUC values, get FPR, TPR and get the data
-for plotting the ROC curve for the model.
+for plotting the ROC curve for the model.Alos, to get the cut-offs.
 }
 \examples{
 

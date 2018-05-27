@@ -2,15 +2,21 @@
 % Please edit documentation in R/plot_roc.R
 \name{plot_roc}
 \alias{plot_roc}
-\title{Plot ROC}
+\title{Plot ROC
+This creates the ROC Plot for model comparison.
+Models under consideration are
+decision tree, logistic regression, random forest}
 \usage{
-plot_roc(perf_tbl)
+plot_roc(perf_tbl, plot_save_file)
 }
 \arguments{
 \item{perf_tbl}{}
 }
 \description{
 Plot ROC
+This creates the ROC Plot for model comparison.
+Models under consideration are
+decision tree, logistic regression, random forest
 }
 \examples{
 
