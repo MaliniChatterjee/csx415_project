@@ -1,1 +1,2 @@
-Here you'll store your raw data files. If they are encoded in a supported file format, they'll automatically be loaded when you call `load.project()`.
+Contains the source data files bank.csv, bank_test_model.csv
+Also contains the Model as data rf_model.Rds, glm_model.Rds, tress_model.Rds
