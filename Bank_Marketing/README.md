@@ -1,12 +1,16 @@
 # Bank_Marketing
 
-Welcome to ProjectTemplate!
+Welcome to Bank_Marketing project!
 
-This file introduces you to ProjectTemplate, but you should eventually replace
-the contents of this file with an introduction to your project. People who
-work with your data in the future will thank you for it, including your future
-self.
+A BMS Subscription Model generation.It calls different functions for model generation.
+Performance evaluation of the model and testing on sample test data.Plot ROC curves 
+for all the different models to compare the performance and test some results,
+Models in consideration: Logistic Regression, Decision Tree, Random Forest.
+The outcome of the model is to predict the probability that a customer will subscribe
+to this new product.Sample Result set shows whom to call who has a higher probability
+to subscribe to the new product.
 
+------Some details on ProjectTemplate----------------------------------
 ProjectTemplate is an R package that helps you organize your statistical
 analysis projects. Since you're reading this file, we'll assume that you've
 already called `create.project()` to set up this project and all of its
