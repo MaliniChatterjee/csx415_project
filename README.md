@@ -1,5 +1,23 @@
-# project
+# Bank_Marketing
 
-This repository is your repository for containing assets for your final project. It should include all supporting documentation, any files, code, reports and (possibly) the data to run your project.  
+Welcome to Bank_Marketing project!
 
-You should replace this README.md file with a proper description of your project.
+A BMS Subscription Model generation.It calls different functions for model generation.
+Performance evaluation of the model and testing on sample test data.Plot ROC curves 
+for all the different models to compare the performance and test some results,
+Models in consideration: Logistic Regression, Decision Tree, Random Forest.
+The outcome of the model is to predict the probability that a customer will subscribe
+to this new product.Sample Result set shows whom to call who has a higher probability
+to subscribe to the new product.
+
+Folders and their description:
+data: Contains the source bank.csv , bank_test_model.csv , 
+data: Model as data rf_model.Rds, tree_model.Rds, glm_model.Rds
+docs: All rmarkdown documents for formal problem statement, initial analysis, 
+reports: Model Performance 
+graphs: Exploratory Data Analysis Plots
+graphs: Decision Tree Plot
+grpahs: Plot_ROC
+bms2: Packages folder used for all the code created for the model: train/fit/performance/test the model and run the results
+bms2/packrat/bundles: bms2-2018-05-27.tar.gz
+deploy instructions placed in docs/Install_BMS_Guide.Rmd
