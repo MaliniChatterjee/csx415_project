@@ -71,7 +71,7 @@ library("bms3")
 
 #copy the packrat bundle from github to local folder 
  https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-27.tar.gz?
-#Sample Windows path where to copy 
+##Sample Windows path where to copy 
 setwd("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
 library('packrat')
 packrat::init()
@@ -133,3 +133,4 @@ bms2.Master("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
 ```
 
 # Generating the report in Knitr
+# Report generated in reports folder in project fork
