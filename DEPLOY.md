@@ -1,22 +1,6 @@
 ## Deploy Instructions
 
----
-title: "Install_BMS_Guide"
-author: "Malini"
-date: "May 27, 2018"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-
-\newpage
-
-
 # Load packages/project
-```{r load_packages, warning=FALSE, message=FALSE, echo=FALSE}
 
 # install the packages
 install.packages('devtools')
@@ -34,6 +18,7 @@ install.packages('roxygen2')
 install.packages('caret')
 install.packages('e1071')
 install.packages('reshape')
+install.packages('testthat'
 # load the packages
 library('ProjectTemplate')
 library(tidyverse)
@@ -47,6 +32,7 @@ library(devtools)
 library(roxygen2)
 library(caret)
 library(packrat)
+library(testthat)
 ```
 
 # Setting up project BMS_DevOps
@@ -61,6 +47,7 @@ create.project("BMS_DEVOPS")
 
 # Copy from github link to "data" folder under the project BMS_DEVOPS
 # https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data
+bank.csv and bank_test_model.csv
 # Also ensure the directory structure has docs,graphs,reports folders.
 ```
 # Set working directory
@@ -72,7 +59,16 @@ setwd("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
 library('ProjectTemplate')
 load.project()
 ```
-# Using Packrat Unbundle
+# Option 1) Using github 
+```{github, warning=FALSE, message=FALSE, echo=FALSE}
+library(devtools)
+install_github("MaliniChatterjee/bms3",ref='master')
+Once install is complete
+library("bms3")
+?bms3::Master
+```
+
+# Option 2) Using Packrat Unbundle
 ```{unbundle, warning=FALSE, message=FALSE, echo=FALSE}
 
 #copy the packrat bundle from github to local folder 
@@ -86,7 +82,7 @@ packrat::unbundle("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\bms2\\
 # this would copy the bms2 package which we need to deploy and execute
 ```
 
-# Alternate option copy the package from github
+# Option 3) Alternate option copy the package from github
 ```{package_creation, warning=FALSE, message=FALSE, echo=FALSE}
 
 #copy the package contents from github <URL>
@@ -104,8 +100,20 @@ create("bms2")
 # setwd("..")
 # install("bms2")
 ```
+# Executing the code for Option 1
+```{run1, warning=FALSE, message=FALSE, echo=FALSE}
+#set the working directory
+#ensure the folder bms3 in copied under this working directory you set
+setwd("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\bms3")
+library(devtools)
+document()
+setwd("..")
+install("bms3")
+#bms3::Master(#pass the working directory as input parameter#)
+bms3.Master("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
+```
 
-# Executing the code
+# Executing the code for Option 2/3
 ```{run, warning=FALSE, message=FALSE, echo=FALSE}
 #set the working directory
 #ensure the folder bms2 in copied under this working directory you set
