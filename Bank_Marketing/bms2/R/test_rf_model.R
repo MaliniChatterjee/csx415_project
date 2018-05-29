@@ -11,9 +11,11 @@ test_rf_model <- function(rf_model,data_test){
   # create the prediction objects for model
   #pred_rf <- prediction(predictions = rf_preds, labels = test_set$y_num)
   cat('\n','DECIDE To CALL or not to call SAMPLE SET TESTING','\n')
-  result <- cbind(rf_preds,data_test)
+  result <- cbind(data_test[,0:16],rf_preds)
+  write.csv(result, file = 'data/rf_preds_sales.csv')
   print(result)
   #yes_set <-result[result$rf_preds >= 0.5]
   #print(yes_set)
-  return()
+  # Write sales lead
+  return(result)
 }
