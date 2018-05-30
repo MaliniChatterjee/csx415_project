@@ -21,5 +21,5 @@ graphs: Decision Tree Plot
 grpahs: Plot_ROC
 bms2: Packages folder used for all the code created for the model: train/fit/performance/test the model and run the results
 bms2/packrat/bundles: bms2-2018-05-29.tar.gz
-deploy instructions placed in docs/Install_BMS_Guide.Rmd
+deploy instructions placed in DEPLOY.md and docs/Install_BMS_Guide.Rmd
 
