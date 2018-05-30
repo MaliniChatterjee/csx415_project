@@ -70,7 +70,7 @@ library("bms3")
 ```{unbundle, warning=FALSE, message=FALSE, echo=FALSE}
 
 #copy the packrat bundle from github to local folder 
- https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-27.tar.gz?
+ https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-29.tar.gz?
 ##Sample Windows path where to copy 
 setwd("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
 library('packrat')
