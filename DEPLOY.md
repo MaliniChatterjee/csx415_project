@@ -70,14 +70,15 @@ library("bms3")
 ```{unbundle, warning=FALSE, message=FALSE, echo=FALSE}
 
 #copy the packrat bundle from github to local folder 
- https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-29.tar.gz?
+ https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-30.tar.gz?
 ##Sample Windows path where to copy 
 setwd("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
 library('packrat')
 packrat::init()
-#packrat::unbundle("local path for bms2-2018-05-27.tar.gz", "C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\")
-packrat::unbundle("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\bms2\\packrat\\bundles\\bms2-2018-05-29.tar.gz", "C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\")
+#packrat::unbundle("local path for bms2-2018-05-30.tar.gz", "C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\")
+packrat::unbundle("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\bms2\\packrat\\bundles\\bms2-2018-05-30.tar.gz", "C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\")
 # this would copy the bms2 package which we need to deploy and execute
+
 ```
 
 # Option 3) Alternate option copy the package from github
@@ -130,4 +131,7 @@ bms2.Master("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
 ```
 
 # Generating the report in Knitr
+```{rep, warning=FALSE, message=FALSE, echo=FALSE}
 # Report generated in reports folder in project fork
+```
+# Shiny app: https://praveentestapps.shinyapps.io/bankMarketing/
