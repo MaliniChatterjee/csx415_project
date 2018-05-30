@@ -1,4 +1,5 @@
 
+
 # Bank_Marketing
 
 Welcome to Bank_Marketing project!
@@ -23,3 +24,4 @@ grpahs: Plot_ROC
 bms2: Packages folder used for all the code created for the model: train/fit/performance/test the model and run the results
 bms2/packrat/bundles: bms2-2018-05-29.tar.gz
 deploy instructions placed in DEPLOY.md and docs/Install_BMS_Guide.Rmd
+shiny app: https://praveentestapps.shinyapps.io/bankMarketing/
