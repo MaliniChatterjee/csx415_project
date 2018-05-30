@@ -1,3 +1,4 @@
+
 # ASSETS of Bank Marketing Project
 
 This markdown document contains the list of assets and artifactories produced during the different phases of this project.
@@ -67,4 +68,7 @@ https://github.com/MaliniChatterjee/csx415_project/blob/master/Bank_Marketing/gr
 ## RF Prediction Results for sample 30 customers from bank_test_model.csv
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/rf_preds_sales.csv
 This is the result of model predictions for the telemarketer to call a customer to sell the product subscription.Line 14 predicts a probability 0.782, since its greater than 0.50, it can be considered as Yes by the model prediction. Now, based on the telemarketer's analysis on the customer features and the model prediction, he/she can take an informed decision to either call or not call the customer.
+
+## Shiny App
+https://praveentestapps.shinyapps.io/bankMarketing/
 
