@@ -16,9 +16,9 @@ fit_tree_model <- function(dat_file=TRUE){
   tree_mod <- rpart(y ~ age + job + marital+education+default+balance+housing+loan+contact+duration+campaign+pdays+previous+poutcome,data=dat_file)
   print('Decision Tree Model Trained')
   # plot the tree
-  png(filename="C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\graphs\\decsn_tree1.png")
+  #png(filename="C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\graphs\\decsn_tree1.png")
   #plot(fit)
-  plot(as.party(tree_mod))
-  dev.off()
+  #plot(as.party(tree_mod))
+  #dev.off()
   return(tree_mod)
 }

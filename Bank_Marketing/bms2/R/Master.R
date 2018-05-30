@@ -13,11 +13,13 @@
 #'
 #' Master()
 Master <- function(path_root){
+
 #Load Packages
 load_packages <- load_packages()
 #Set working directory for Bank_Marketing project
 #setwd("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing")
 setwd(path_root)
+
 #Creating the train and test
 train_set <- train_test("data/bank.csv")$train
 test_set <- train_test("data/bank.csv")$test

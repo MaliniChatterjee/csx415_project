@@ -1,11 +1,11 @@
 #' A Load Package libraries
 #'
 #' @param  default
-#' @keywords 
+#' @keywords
 #' @export
 #' @examples
-#' 
-#' 
+#'
+#'
 #' load_packages()
 
 load_packages <- function(){
@@ -26,5 +26,6 @@ load_packages <- function(){
   library(stringr)
   library(lubridate)
   library(libcoin)
+  library(testthat)
   print("All libraries loaded")
 }
