@@ -70,13 +70,13 @@ library("bms3")
 ```{unbundle, warning=FALSE, message=FALSE, echo=FALSE}
 
 #copy the packrat bundle from github to local folder 
- https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-27.tar.gz?
+ https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-29.tar.gz?
 ##Sample Windows path where to copy 
 setwd("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
 library('packrat')
 packrat::init()
 #packrat::unbundle("local path for bms2-2018-05-27.tar.gz", "C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\")
-packrat::unbundle("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\bms2\\packrat\\bundles\\bms2-2018-05-27.tar.gz", "C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\")
+packrat::unbundle("C:\\Users\\chatt\\OneDrive\\Documents\\Bank_Marketing\\bms2\\packrat\\bundles\\bms2-2018-05-29.tar.gz", "C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\")
 # this would copy the bms2 package which we need to deploy and execute
 ```
 
@@ -104,9 +104,6 @@ create("bms2")
 #ensure the folder bms3 in copied under this working directory you set
 setwd("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS\\bms3")
 library(devtools)
-document()
-setwd("..")
-install("bms3")
 #bms3::Master(#pass the working directory as input parameter#)
 bms3.Master("C:\\Users\\chatt\\OneDrive\\Documents\\BMS_DEVOPS")
 ```

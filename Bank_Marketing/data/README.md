@@ -1,3 +1,4 @@
+
 ## Data (Input)
 
 We are using the Bank dataset used from financial institution. http://archive.ics.uci.edu/ml/datasets/Bank+Marketing#
@@ -14,3 +15,8 @@ The Random Forest model is saved in the underlying data folder.
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/rf_model.Rds
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/glm_model.Rds
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/tree_model.Rds
+
+## Telemarketer Sales Leads
+
+Based on the Random Forest predictions, providing the output file rf_preds_sales.csv
+https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/rf_preds_sales.csv
