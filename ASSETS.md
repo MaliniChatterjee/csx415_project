@@ -1,4 +1,3 @@
-
 # ASSETS of Bank Marketing Project
 
 This markdown document contains the list of assets and artifactories produced during the different phases of this project.
@@ -48,8 +47,9 @@ https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bm
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/bms2/R/Master.R
 
 ## Deploy code
-Packrat bundle placed in https://github.com/MaliniChatterjee/csx415_project/blob/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-27.tar.gz
+Packrat bundle placed in https://github.com/MaliniChatterjee/csx415_project/blob/master/Bank_Marketing/bms2/packrat/bundles/bms2-2018-05-29.tar.gz
 Deploy instructions in https://github.com/MaliniChatterjee/csx415_project/blob/master/Bank_Marketing/docs/Install_BMS_Guide.Rmd
+Also in https://github.com/MaliniChatterjee/csx415_project/blob/master/DEPLOY.md
 
 ## Model as data
 
@@ -58,9 +58,13 @@ https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/da
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/glm_model.Rds
 https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/tree_model.Rds
 
-## Plot ROC
+## Plot ROC Results
 https://github.com/MaliniChatterjee/csx415_project/blob/master/Bank_Marketing/graphs/Plot_ROC.pdf
 
 ## Plot Decision Tree
 https://github.com/MaliniChatterjee/csx415_project/blob/master/Bank_Marketing/graphs/Decision_Tree.pdf
+
+## RF Prediction Results for sample 30 customers from bank_test_model.csv
+https://github.com/MaliniChatterjee/csx415_project/tree/master/Bank_Marketing/data/rf_preds_sales.csv
+This is the result of model predictions for the telemarketer to call a customer to sell the product subscription.Line 14 predicts a probability 0.782, since its greater than 0.50, it can be considered as Yes by the model prediction. Now, based on the telemarketer's analysis on the customer features and the model prediction, he/she can take an informed decision to either call or not call the customer.
 
